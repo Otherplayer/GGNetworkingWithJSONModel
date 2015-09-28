@@ -53,8 +53,8 @@
 		638E15601B8FFD4800345341 /* NSObject+GGNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GGNetworkingMethods.m"; sourceTree = "<group>"; };
 		638E15621B8FFFD600345341 /* GGNTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGNTManager.h; sourceTree = "<group>"; };
 		638E15631B8FFFD600345341 /* GGNTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNTManager.m; sourceTree = "<group>"; };
-		63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGBASEModel.h; path = ../GGBASEModel.h; sourceTree = "<group>"; };
-		63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGBASEModel.m; path = ../GGBASEModel.m; sourceTree = "<group>"; };
+		63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGBASEModel.h; path = ../../GGBASEModel.h; sourceTree = "<group>"; };
+		63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGBASEModel.m; path = ../../GGBASEModel.m; sourceTree = "<group>"; };
 		63BF6F6E1BB9273A00ED7F84 /* GGDynamicTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDynamicTypeModel.h; sourceTree = "<group>"; };
 		63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDynamicTypeModel.m; sourceTree = "<group>"; };
 		63BF6F711BB93C3100ED7F84 /* GGDynamicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDynamicModel.h; sourceTree = "<group>"; };
@@ -120,6 +120,15 @@
 				9462DC747BB39BD2CABFDBFF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		63BF6F771BB940E400ED7F84 /* RootModel */ = {
+			isa = PBXGroup;
+			children = (
+				63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */,
+				63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */,
+			);
+			path = RootModel;
 			sourceTree = "<group>";
 		};
 		63DAA5221B8DC60A0029AA8A = {
@@ -207,10 +216,9 @@
 				63F9C1841B8F69FC00C9AA2B /* Categories */,
 				63F9C1911B8F69FC00C9AA2B /* Logger */,
 				63F9C1941B8F69FC00C9AA2B /* NetworkingConfiguration */,
+				63BF6F771BB940E400ED7F84 /* RootModel */,
 				638E15621B8FFFD600345341 /* GGNTManager.h */,
 				638E15631B8FFFD600345341 /* GGNTManager.m */,
-				63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */,
-				63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
