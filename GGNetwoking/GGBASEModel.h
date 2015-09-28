@@ -13,7 +13,8 @@
 
 @property (nonatomic, strong) NSDictionary <Optional>*data;       //数据
 
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *description;//避免出现与iOS字段重名这样的问题
+
 @property (nonatomic, strong) NSString *time_stamp;
 
 
