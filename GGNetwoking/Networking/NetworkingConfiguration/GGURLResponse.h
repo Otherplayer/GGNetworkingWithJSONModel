@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "GGNTConfiguration.h"
 @interface GGURLResponse : NSObject
-@property (nonatomic, copy) NSDictionary *requestParams;
-@property (nonatomic, copy) NSString *requestUrlStr;
+@property (nonatomic, copy) NSDictionary *requestParams;        //请求参数
+@property (nonatomic, copy) NSString *requestUrlStr;            //请求接口地址
 
 @property (nonatomic, copy, readonly) id responseObject;        //处理后的数据
 @property (nonatomic, copy, readonly) NSString *responseString; //json字符串

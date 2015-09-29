@@ -9,9 +9,18 @@
 #ifndef GGNetwoking_GGNTConfiguration_h
 #define GGNetwoking_GGNTConfiguration_h
 
-#define SHOULD_USE_JSONMODEL
+#define SHOULD_USE_JSONMODEL   /*是否调用JSONModel*/
 
-//#define IS_OFF_LINE
+
+//////////////////////////////////////
+#ifdef DEBUG
+#define IS_OFF_LINE
+#endif
+//////////////////////////////////////
+
+
+
+
 
 
 #ifdef IS_OFF_LINE
