@@ -15,6 +15,7 @@
 		63BF6F6D1BB922F800ED7F84 /* GGBASEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */; settings = {ASSET_TAGS = (); }; };
 		63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */; settings = {ASSET_TAGS = (); }; };
 		63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F721BB93C3100ED7F84 /* GGDynamicModel.m */; settings = {ASSET_TAGS = (); }; };
+		63BF6F7F1BB9483E00ED7F84 /* GGNetwokingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F7E1BB9483E00ED7F84 /* GGNetwokingUITests.m */; };
 		63DAA5311B8DC60A0029AA8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAA5301B8DC60A0029AA8A /* main.m */; };
 		63DAA5341B8DC60A0029AA8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAA5331B8DC60A0029AA8A /* AppDelegate.m */; };
 		63DAA5371B8DC60A0029AA8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAA5361B8DC60A0029AA8A /* ViewController.m */; };
@@ -33,6 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		63BF6F811BB9483E00ED7F84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DAA5231B8DC60A0029AA8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DAA52A1B8DC60A0029AA8A;
+			remoteInfo = GGNetwoking;
+		};
 		63DAA5451B8DC60A0029AA8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63DAA5231B8DC60A0029AA8A /* Project object */;
@@ -59,6 +67,9 @@
 		63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDynamicTypeModel.m; sourceTree = "<group>"; };
 		63BF6F711BB93C3100ED7F84 /* GGDynamicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDynamicModel.h; sourceTree = "<group>"; };
 		63BF6F721BB93C3100ED7F84 /* GGDynamicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDynamicModel.m; sourceTree = "<group>"; };
+		63BF6F7C1BB9483E00ED7F84 /* GGNetwokingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GGNetwokingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63BF6F7E1BB9483E00ED7F84 /* GGNetwokingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GGNetwokingUITests.m; sourceTree = "<group>"; };
+		63BF6F801BB9483E00ED7F84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DAA52B1B8DC60A0029AA8A /* GGNetwoking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GGNetwoking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DAA52F1B8DC60A0029AA8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DAA5301B8DC60A0029AA8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +106,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		63BF6F791BB9483E00ED7F84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DAA5281B8DC60A0029AA8A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,11 +149,21 @@
 			path = RootModel;
 			sourceTree = "<group>";
 		};
+		63BF6F7D1BB9483E00ED7F84 /* GGNetwokingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63BF6F7E1BB9483E00ED7F84 /* GGNetwokingUITests.m */,
+				63BF6F801BB9483E00ED7F84 /* Info.plist */,
+			);
+			path = GGNetwokingUITests;
+			sourceTree = "<group>";
+		};
 		63DAA5221B8DC60A0029AA8A = {
 			isa = PBXGroup;
 			children = (
 				63DAA52D1B8DC60A0029AA8A /* GGNetwoking */,
 				63DAA5471B8DC60A0029AA8A /* GGNetwokingTests */,
+				63BF6F7D1BB9483E00ED7F84 /* GGNetwokingUITests */,
 				63DAA52C1B8DC60A0029AA8A /* Products */,
 				3BAE438E8535FF23B54C42B2 /* Pods */,
 				686D96542B75E8E30579E443 /* Frameworks */,
@@ -147,6 +175,7 @@
 			children = (
 				63DAA52B1B8DC60A0029AA8A /* GGNetwoking.app */,
 				63DAA5441B8DC60A0029AA8A /* GGNetwokingTests.xctest */,
+				63BF6F7C1BB9483E00ED7F84 /* GGNetwokingUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +312,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		63BF6F7B1BB9483E00ED7F84 /* GGNetwokingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63BF6F851BB9483E00ED7F84 /* Build configuration list for PBXNativeTarget "GGNetwokingUITests" */;
+			buildPhases = (
+				63BF6F781BB9483E00ED7F84 /* Sources */,
+				63BF6F791BB9483E00ED7F84 /* Frameworks */,
+				63BF6F7A1BB9483E00ED7F84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63BF6F821BB9483E00ED7F84 /* PBXTargetDependency */,
+			);
+			name = GGNetwokingUITests;
+			productName = GGNetwokingUITests;
+			productReference = 63BF6F7C1BB9483E00ED7F84 /* GGNetwokingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		63DAA52A1B8DC60A0029AA8A /* GGNetwoking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DAA54E1B8DC60A0029AA8A /* Build configuration list for PBXNativeTarget "GGNetwoking" */;
@@ -329,6 +376,10 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "__无邪_";
 				TargetAttributes = {
+					63BF6F7B1BB9483E00ED7F84 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 63DAA52A1B8DC60A0029AA8A;
+					};
 					63DAA52A1B8DC60A0029AA8A = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -353,11 +404,19 @@
 			targets = (
 				63DAA52A1B8DC60A0029AA8A /* GGNetwoking */,
 				63DAA5431B8DC60A0029AA8A /* GGNetwokingTests */,
+				63BF6F7B1BB9483E00ED7F84 /* GGNetwokingUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		63BF6F7A1BB9483E00ED7F84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DAA5291B8DC60A0029AA8A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -411,6 +470,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		63BF6F781BB9483E00ED7F84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63BF6F7F1BB9483E00ED7F84 /* GGNetwokingUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DAA5271B8DC60A0029AA8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,6 +514,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		63BF6F821BB9483E00ED7F84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DAA52A1B8DC60A0029AA8A /* GGNetwoking */;
+			targetProxy = 63BF6F811BB9483E00ED7F84 /* PBXContainerItemProxy */;
+		};
 		63DAA5461B8DC60A0029AA8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63DAA52A1B8DC60A0029AA8A /* GGNetwoking */;
@@ -474,6 +546,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		63BF6F831BB9483E00ED7F84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = GGNetwokingUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Otherplayer.GGNetwokingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GGNetwoking;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		63BF6F841BB9483E00ED7F84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GGNetwokingUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Otherplayer.GGNetwokingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GGNetwoking;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		63DAA54C1B8DC60A0029AA8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -565,7 +665,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Otherplayer/Desktop/GGNetworking-master/GGNetwoking/PrefixHeader.pch";
 				INFOPLIST_FILE = GGNetwoking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -580,7 +680,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Otherplayer/Desktop/GGNetworking-master/GGNetwoking/PrefixHeader.pch";
 				INFOPLIST_FILE = GGNetwoking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -623,6 +723,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63BF6F851BB9483E00ED7F84 /* Build configuration list for PBXNativeTarget "GGNetwokingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63BF6F831BB9483E00ED7F84 /* Debug */,
+				63BF6F841BB9483E00ED7F84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		63DAA5261B8DC60A0029AA8A /* Build configuration list for PBXProject "GGNetwoking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

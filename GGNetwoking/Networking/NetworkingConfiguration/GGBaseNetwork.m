@@ -29,10 +29,8 @@ NSString *const kIMGKey = @"kIMGKey";
         dispatch_queue_t requestQueue = dispatch_queue_create("com.example.MyQueue", NULL);
         shareManager.completionQueue = requestQueue;
         
-        
-        shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-        shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"image/jpeg"];
-        shareManager.responseSerializer.acceptableContentTypes = [shareManager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+        shareManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/xml", @"application/json", @"text/xml", @"text/json", @"text/html",nil];
+        /*@"application/xml", @"text/xml", @"application/json", @"text/json", @"text/html",@"text/javascript", @"image/jpeg";*/
         
         //设置安全请求类型
         AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
