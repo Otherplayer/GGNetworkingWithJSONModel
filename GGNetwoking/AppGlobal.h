@@ -10,6 +10,7 @@
 #define GGNetwoking_AppGlobal_h
 
 #import <AFNetworking/AFNetworking.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #define NSLog(format, ...) do { \
 fprintf(stderr, "<%s : %d> %s\n", \
