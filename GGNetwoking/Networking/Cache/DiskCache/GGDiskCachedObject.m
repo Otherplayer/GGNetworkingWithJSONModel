@@ -12,4 +12,55 @@
 
 // Insert code here to add functionality to your managed object subclass
 
+
++ (instancetype)saveContent:(NSData *)content identifier:(NSString *)identifier{
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
+    if (cachedObject == nil) {
+        cachedObject = [GGDiskCachedObject MR_createEntity];
+        cachedObject.key = identifier;
+    }
+    cachedObject.content = content;
+    cachedObject.lastUpdateTime = [NSDate dateWithTimeIntervalSinceNow:0];
+    //save
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    
+    return cachedObject;
+}
+
++ (instancetype)fetchCachedDataWithIdentifier:(NSString *)identifier{
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
+    return cachedObject;
+}
+
++ (void)deleteCachedObjectWithIdentifier:(NSString *)identifier{
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
+    if (cachedObject) {
+        BOOL isDeleted = [cachedObject MR_deleteEntity];
+        NSLog(@"DELETE:[%d]",isDeleted);
+    }
+}
+
+
+
+
+//- (BOOL)isValid
+//{
+//    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:self.lastUpdateTime];
+//    return timeInterval > kGGCacheOutdateTimeSeconds;
+//}
+
+
+
+
+- (void)setContent:(NSData *)content
+{
+    self.content = [content copy];
+}
+
+
+#pragma mark - public method
+
+
+
+
 @end

@@ -21,4 +21,8 @@ fprintf(stderr, "------\n"); \
 } while (0)
 
 
+#define MR_CURRENTTHREAD_SAVE [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+
+
+
 #endif

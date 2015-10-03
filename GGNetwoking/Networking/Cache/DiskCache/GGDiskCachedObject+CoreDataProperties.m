@@ -15,5 +15,9 @@
 
 @dynamic content;
 @dynamic lastUpdateTime;
+@dynamic key;
+
+
+
 
 @end

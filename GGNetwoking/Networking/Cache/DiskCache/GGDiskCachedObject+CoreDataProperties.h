@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GGDiskCachedObject (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSData *content;
-@property (nonatomic) NSTimeInterval lastUpdateTime;
+@property (nonatomic) NSDate *lastUpdateTime;
+@property (nonatomic, retain) NSString *key;
 
 @end
 

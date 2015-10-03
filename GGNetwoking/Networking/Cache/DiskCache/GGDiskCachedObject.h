@@ -15,6 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Insert code here to declare functionality of your managed object subclass
 
++ (instancetype)saveContent:(NSData *)content identifier:(NSString *)identifier;
+
++ (instancetype)fetchCachedDataWithIdentifier:(NSString *)identifier;
+
++ (void)deleteCachedObjectWithIdentifier:(NSString *)identifier;
+
 @end
 
 NS_ASSUME_NONNULL_END
