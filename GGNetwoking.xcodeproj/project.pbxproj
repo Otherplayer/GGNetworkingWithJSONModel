@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		634347151BBF729A00090F1A /* GGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347121BBF729A00090F1A /* GGCache.m */; settings = {ASSET_TAGS = (); }; };
 		634347161BBF729A00090F1A /* GGCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347141BBF729A00090F1A /* GGCachedObject.m */; settings = {ASSET_TAGS = (); }; };
+		634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634347171BBF74AD00090F1A /* GGNetworking.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		6343471E1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6343471B1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		6343471F1BBF781800090F1A /* GGDiskCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6343471D1BBF781800090F1A /* GGDiskCachedObject.m */; settings = {ASSET_TAGS = (); }; };
 		638E15581B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15571B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m */; };
 		638E155B1B8FFC2900345341 /* NSArray+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E155A1B8FFC2900345341 /* NSArray+GGNetworkingMethods.m */; };
 		638E155E1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E155D1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m */; };
@@ -55,6 +58,11 @@
 		634347121BBF729A00090F1A /* GGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCache.m; sourceTree = "<group>"; };
 		634347131BBF729A00090F1A /* GGCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCachedObject.h; sourceTree = "<group>"; };
 		634347141BBF729A00090F1A /* GGCachedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCachedObject.m; sourceTree = "<group>"; };
+		634347181BBF74AD00090F1A /* GGNetworking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GGNetworking.xcdatamodel; sourceTree = "<group>"; };
+		6343471A1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GGDiskCachedObject+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6343471B1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GGDiskCachedObject+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6343471C1BBF781800090F1A /* GGDiskCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDiskCachedObject.h; sourceTree = "<group>"; };
+		6343471D1BBF781800090F1A /* GGDiskCachedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDiskCachedObject.m; sourceTree = "<group>"; };
 		638E15561B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GGNetworkingMethods.h"; sourceTree = "<group>"; };
 		638E15571B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GGNetworkingMethods.m"; sourceTree = "<group>"; };
 		638E15591B8FFC2900345341 /* NSArray+GGNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+GGNetworkingMethods.h"; sourceTree = "<group>"; };
@@ -143,6 +151,11 @@
 		6343470F1BBF725900090F1A /* DiskCache */ = {
 			isa = PBXGroup;
 			children = (
+				634347171BBF74AD00090F1A /* GGNetworking.xcdatamodeld */,
+				6343471A1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.h */,
+				6343471B1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.m */,
+				6343471C1BBF781800090F1A /* GGDiskCachedObject.h */,
+				6343471D1BBF781800090F1A /* GGDiskCachedObject.m */,
 			);
 			path = DiskCache;
 			sourceTree = "<group>";
@@ -500,9 +513,11 @@
 			files = (
 				63F9C1A21B8F69FC00C9AA2B /* GGLogger.m in Sources */,
 				63DAA5371B8DC60A0029AA8A /* ViewController.m in Sources */,
+				634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */,
 				63BF6F6D1BB922F800ED7F84 /* GGBASEModel.m in Sources */,
 				63F9C19E1B8F69FC00C9AA2B /* NSMutableString+GGNetworkMethods.m in Sources */,
 				638E15641B8FFFD700345341 /* GGNTManager.m in Sources */,
+				6343471F1BBF781800090F1A /* GGDiskCachedObject.m in Sources */,
 				63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */,
 				63DAA5341B8DC60A0029AA8A /* AppDelegate.m in Sources */,
 				63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */,
@@ -514,6 +529,7 @@
 				638E15581B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m in Sources */,
 				638E155B1B8FFC2900345341 /* NSArray+GGNetworkingMethods.m in Sources */,
 				634347151BBF729A00090F1A /* GGCache.m in Sources */,
+				6343471E1BBF781800090F1A /* GGDiskCachedObject+CoreDataProperties.m in Sources */,
 				63DAA5311B8DC60A0029AA8A /* main.m in Sources */,
 				63F9C1A31B8F69FC00C9AA2B /* GGBaseNetwork.m in Sources */,
 			);
@@ -776,6 +792,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		634347171BBF74AD00090F1A /* GGNetworking.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				634347181BBF74AD00090F1A /* GGNetworking.xcdatamodel */,
+			);
+			currentVersion = 634347181BBF74AD00090F1A /* GGNetworking.xcdatamodel */;
+			path = GGNetworking.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 63DAA5231B8DC60A0029AA8A /* Project object */;
 }
