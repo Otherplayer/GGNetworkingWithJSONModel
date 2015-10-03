@@ -43,8 +43,8 @@ typedef NS_ENUM(NSInteger, GGResponseErrCodeType){
 
 typedef NS_ENUM(NSUInteger, GGURLResponseStatus){
     GGURLResponseStatusSuccess,       //请求是否成功只考虑是否成功收到服务器反馈。
-    GGURLResponseStatusErrorTimeout,
-    GGURLResponseStatusErrorNoNetwork // 默认除了超时以外的错误都是无网络错误。
+    GGURLResponseStatusErrorTimeout,  //请求超时
+    GGURLResponseStatusErrorNoNetwork //默认除了超时以外的错误都是无网络错误。
 };
 
 
