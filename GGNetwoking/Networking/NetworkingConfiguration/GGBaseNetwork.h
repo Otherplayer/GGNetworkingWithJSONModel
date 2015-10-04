@@ -17,7 +17,6 @@ extern NSString *const kIMGKey;
 //*(+ (instancetype)sharedNetwork;)*//
 
 /// post 请求
-- (void)POST:(NSString *)URLString params:(id)parameters cache:(BOOL)flag completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock;
 
 - (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock;
 

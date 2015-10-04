@@ -162,24 +162,6 @@ NSString *const kIMGKey = @"kIMGKey";
 
 ////网络请求,请勿改动
 
-- (void)POST:(NSString *)URLString params:(id)parameters cache:(BOOL)flag completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    
-    // 先检查一下是否需要从缓存中读数据
-    if (flag && [self hasCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
-        return;
-    }
-    
-    [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters shouldCache:flag completedHandler:completed];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        [self isFailedOncallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
-        
-    }];
-}
-
 - (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
     // 先检查一下是否需要从缓存中读数据
     if (memoryCache && [self hasCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {

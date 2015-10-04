@@ -34,7 +34,7 @@ NSString *const kAPIDynamic  = HOTYQ_JAVA_API BASE_URL_Photo @"/getPhotos.do";
 
 ///1.
 - (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    [self POST:kAPITopTypee params:parameters cache:NO completed:completed timeout:timeoutBlock];
+    [self POST:kAPITopTypee params:parameters memoryCache:NO diskCache:YES completed:completed timeout:timeoutBlock];
 }
 
 
