@@ -39,10 +39,12 @@
     [paramsDictionary setValue:@"110593" forKey:@"uid"];
     [paramsDictionary setValue:@"get_main_info" forKey:@"action"];
     
-    [self.manager getTopTypesWithParameters:paramsDictionary completedHandler:^(BOOL result, GGResponseErrCodeType errCode, GGBASEModel *responseData) {
-        NSArray *datas = [GGDynamicTypeModel arrayOfModelsFromDictionaries:responseData.data[@"types"]];
-        for (GGDynamicTypeModel *model in datas) {
-            NSLog(@"%@",model.firstName);
+    [self.manager getTopTypesWithParameters:paramsDictionary completedHandler:^(BOOL success, GGResponseErrCodeType errCode, GGBASEModel *responseData) {
+        if (success) {
+            NSArray *datas = [GGDynamicTypeModel arrayOfModelsFromDictionaries:responseData.data[@"types"]];
+            for (GGDynamicTypeModel *model in datas) {
+                NSLog(@"%@",model.firstName);
+            }
         }
     } timeout:^(NSInteger errCode, NSString *localizedDescription) {
         
@@ -66,9 +68,9 @@
     [paramsDictionary setObject:@"112478" forKey:@"uid"];
     [paramsDictionary setObject:@"" forKey:@"app_umeng"];
     [paramsDictionary setObject:@"4C648A69-E29D-4465-8677-3B9D90178333" forKey:@"mark"];
-    [[GGNTManager sharedManager] getDynamicListWithParameters:paramsDictionary completedHandler:^(BOOL result, GGResponseErrCodeType errCode, GGBASEModel *responseData) {
+    [[GGNTManager sharedManager] getDynamicListWithParameters:paramsDictionary completedHandler:^(BOOL success, GGResponseErrCodeType errCode, GGBASEModel *responseData) {
         
-        if (result) {
+        if (success) {
             NSError *dynamicError = nil;
             NSArray *dynamics = [GGDynamicModel arrayOfModelsFromDictionaries:responseData.data[@"imageList"] error:&dynamicError];
             

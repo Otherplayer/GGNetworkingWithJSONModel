@@ -47,11 +47,8 @@
         
         self.isReachable = isCan;
         self.isReachableWifi = isCanWifi;
-        if (isCan) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"loadDataNow" object:nil];
-        }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"HYQNET" object:@(status)];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"HYQNET" object:@(status)];
         
         NSLog(@"【Reachability: %@】", AFStringFromNetworkReachabilityStatus(status));
     }];

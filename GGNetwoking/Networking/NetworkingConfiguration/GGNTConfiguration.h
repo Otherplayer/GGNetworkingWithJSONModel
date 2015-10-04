@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, GGURLResponseStatus){
 
 
 
-typedef void (^GGRequestCallbackBlock)(BOOL result, GGResponseErrCodeType errCode, id responseData);
+typedef void (^GGRequestCallbackBlock)(BOOL success, GGResponseErrCodeType errCode, id responseData);
 typedef void (^GGRequestTimeoutBlock)(NSInteger errCode, NSString *localizedDescription);
 
 
