@@ -203,15 +203,15 @@ NSString *const kIMGKey = @"kIMGKey";
 }
 
 
-- (void)GET:(NSString *)URLString params:(id)parameters cache:(BOOL)flag diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
     
-    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:flag diskCache:diskCache completed:completed]) {
+    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
     }
     
     [[GGBaseNetwork sharedNetwork] GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:flag diskCache:diskCache completedHandler:completed];
+        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:memoryCache diskCache:diskCache completedHandler:completed];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
