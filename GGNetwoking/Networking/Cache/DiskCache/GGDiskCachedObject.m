@@ -12,6 +12,7 @@
 
 // Insert code here to add functionality to your managed object subclass
 
+#pragma mark - public method
 
 + (instancetype)saveContent:(NSData *)content identifier:(NSString *)identifier{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"key = %@",identifier];
@@ -23,7 +24,7 @@
     cachedObject.content = content;
     cachedObject.lastUpdateTime = [NSDate dateWithTimeIntervalSinceNow:0];
     //save
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];// should save on currentthread ???
     return cachedObject;
 }
 
@@ -41,24 +42,6 @@
 }
 
 
-
-
-//- (BOOL)isValid
-//{
-//    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:self.lastUpdateTime];
-//    return timeInterval > kGGCacheOutdateTimeSeconds;
-//}
-
-
-
-
-//- (void)setContent:(NSData *)content
-//{
-//    self.content = [content copy];
-//}
-
-
-#pragma mark - public method
 
 
 @end

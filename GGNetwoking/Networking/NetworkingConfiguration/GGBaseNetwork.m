@@ -125,7 +125,7 @@ NSString *const kIMGKey = @"kIMGKey";
     completed(NO, GGServiceResponseErrCodeTypeSeverErr, error.localizedDescription);
 }
 
-- (void)isSuccessOperation:(AFHTTPRequestOperation *)operation withReObject:(id)responseObject completedHandler:(GGRequestCallbackBlock)completed{
+- (void)isSuccessOperationShouldNotCache:(AFHTTPRequestOperation *)operation withReObject:(id)responseObject completedHandler:(GGRequestCallbackBlock)completed{
     
     [GGLogger logDebugOperation:operation];
     
@@ -163,20 +163,14 @@ NSString *const kIMGKey = @"kIMGKey";
 ////网络请求,请勿改动
 
 - (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    // 先检查一下是否需要从缓存中读数据
-    if (memoryCache && [self hasCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
-        return;
-    }
     
-    // 在网络未连接时是否需要从本地磁盘读数据
-    BOOL isCannotReachable = ![GGReachibility sharedInstance].isReachable;
-    if (diskCache && isCannotReachable && [self hasDiskCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
+    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
     }
     
     [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters shouldCache:memoryCache completedHandler:completed];
+        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:memoryCache diskCache:diskCache completedHandler:completed];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -199,7 +193,7 @@ NSString *const kIMGKey = @"kIMGKey";
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [self isSuccessOperation:operation withReObject:responseObject completedHandler:completed];
+        [self isSuccessOperationShouldNotCache:operation withReObject:responseObject completedHandler:completed];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -209,16 +203,15 @@ NSString *const kIMGKey = @"kIMGKey";
 }
 
 
-- (void)GET:(NSString *)URLString params:(id)parameters cache:(BOOL)flag completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)GET:(NSString *)URLString params:(id)parameters cache:(BOOL)flag diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
     
-    // 先检查一下是否需要从缓存中读数据
-    if (flag && [self hasCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
+    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:flag diskCache:diskCache completed:completed]) {
         return;
     }
     
     [[GGBaseNetwork sharedNetwork] GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters shouldCache:flag completedHandler:completed];
+        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:flag diskCache:diskCache completedHandler:completed];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -229,7 +222,21 @@ NSString *const kIMGKey = @"kIMGKey";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - private
+
+- (BOOL)shouldLoadDataFromCache:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed{
+    // 先检查一下是否需要从缓存中读数据
+    if (memoryCache && [self hasCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
+        return YES;
+    }
+    
+    // 在网络未连接时是否需要从本地磁盘读数据
+    BOOL isCannotReachable = ![GGReachibility sharedInstance].isReachable;
+    if (diskCache && isCannotReachable && [self hasDiskCacheWithURLStr:URLString Params:parameters completedHandler:completed]) {
+        return YES;
+    }
+    return NO;
+}
+
 
 - (BOOL)hasCacheWithURLStr:(NSString *)urlStr Params:(NSDictionary *)params completedHandler:(GGRequestCallbackBlock)completed{
     
@@ -268,7 +275,7 @@ NSString *const kIMGKey = @"kIMGKey";
 }
 
 
-- (void)isSuccessOperation:(AFHTTPRequestOperation *)operation object:(id)object url:(NSString *)url params:(id)params shouldCache:(BOOL)flag completedHandler:(GGRequestCallbackBlock)completed{
+- (void)isSuccessOperation:(AFHTTPRequestOperation *)operation object:(id)object url:(NSString *)url params:(id)params memberCache:(BOOL)memberCache diskCache:(BOOL)diskCache completedHandler:(GGRequestCallbackBlock)completed{
     GGURLResponse *response = [[GGURLResponse alloc] initWithResponse:operation.response
                                                               request:operation.request
                                                        responseObject:object
@@ -279,7 +286,7 @@ NSString *const kIMGKey = @"kIMGKey";
     response.requestParams = params;
     response.requestUrlStr = url;
     
-    [self isSuccessedOnCallingAPI:response shouldCache:flag diskCache:YES completedHandler:completed];
+    [self isSuccessedOnCallingAPI:response shouldCache:memberCache diskCache:diskCache completedHandler:completed];
 }
 
 
