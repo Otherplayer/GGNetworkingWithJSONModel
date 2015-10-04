@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 @interface AppDelegate ()
 
 @end
@@ -18,8 +17,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // Register Network Monitor
+    [[GGReachibility sharedInstance] startMonitoringInternetStates];
     // Register Splite
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"GGNetworking.sqlite"];
+    [MagicalRecord cleanUp];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"GGNetworking"];
     
     return YES;
 }

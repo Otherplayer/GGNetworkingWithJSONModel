@@ -68,11 +68,13 @@
     [paramsDictionary setObject:@"4C648A69-E29D-4465-8677-3B9D90178333" forKey:@"mark"];
     [[GGNTManager sharedManager] getDynamicListWithParameters:paramsDictionary completedHandler:^(BOOL result, GGResponseErrCodeType errCode, GGBASEModel *responseData) {
         
-        NSError *dynamicError = nil;
-        NSArray *dynamics = [GGDynamicModel arrayOfModelsFromDictionaries:responseData.data[@"imageList"] error:&dynamicError];
-        
-        for (GGDynamicModel *model in dynamics) {
-            NSLog(@"%@",model.dateStr);
+        if (result) {
+            NSError *dynamicError = nil;
+            NSArray *dynamics = [GGDynamicModel arrayOfModelsFromDictionaries:responseData.data[@"imageList"] error:&dynamicError];
+            
+            for (GGDynamicModel *model in dynamics) {
+                NSLog(@"%@",model.dateStr);
+            }
         }
         
     } timeout:^(NSInteger errCode, NSString *localizedDescription) {

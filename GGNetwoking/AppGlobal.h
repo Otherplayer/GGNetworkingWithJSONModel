@@ -11,6 +11,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <MagicalRecord/MagicalRecord.h>
+#import "GGReachibility.h"
 
 #define NSLog(format, ...) do { \
 fprintf(stderr, "<%s : %d> %s\n", \

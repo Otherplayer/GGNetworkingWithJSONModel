@@ -2,7 +2,7 @@
 //  GGDiskCachedObject.m
 //  GGNetwoking
 //
-//  Created by __无邪_ on 15/10/3.
+//  Created by __无邪_ on 15/10/4.
 //  Copyright © 2015年 __无邪_. All rights reserved.
 //
 
@@ -14,7 +14,8 @@
 
 
 + (instancetype)saveContent:(NSData *)content identifier:(NSString *)identifier{
-    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"key = %@",identifier];
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstWithPredicate:predicate];
     if (cachedObject == nil) {
         cachedObject = [GGDiskCachedObject MR_createEntity];
         cachedObject.key = identifier;
@@ -23,12 +24,13 @@
     cachedObject.lastUpdateTime = [NSDate dateWithTimeIntervalSinceNow:0];
     //save
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    
+    NSLog(@"Save : %@",[GGDiskCachedObject MR_findAll]);
+    NSLog(@"%@",[GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier]);
     return cachedObject;
 }
 
 + (instancetype)fetchCachedDataWithIdentifier:(NSString *)identifier{
-    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:@"aaaaa"];
     return cachedObject;
 }
 
@@ -52,15 +54,13 @@
 
 
 
-- (void)setContent:(NSData *)content
-{
-    self.content = [content copy];
-}
+//- (void)setContent:(NSData *)content
+//{
+//    self.content = [content copy];
+//}
 
 
 #pragma mark - public method
-
-
 
 
 @end
