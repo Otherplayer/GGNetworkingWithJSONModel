@@ -20,8 +20,7 @@
     // Register Network Monitor
     [[GGReachibility sharedInstance] startMonitoringInternetStates];
     // Register Splite
-    [MagicalRecord cleanUp];
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"GGNetworking"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"GGNetworking.sqlite"];
     
     return YES;
 }

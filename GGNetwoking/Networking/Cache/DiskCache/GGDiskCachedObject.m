@@ -23,14 +23,12 @@
     cachedObject.content = content;
     cachedObject.lastUpdateTime = [NSDate dateWithTimeIntervalSinceNow:0];
     //save
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    NSLog(@"Save : %@",[GGDiskCachedObject MR_findAll]);
-    NSLog(@"%@",[GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier]);
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
     return cachedObject;
 }
 
 + (instancetype)fetchCachedDataWithIdentifier:(NSString *)identifier{
-    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:@"aaaaa"];
+    GGDiskCachedObject *cachedObject = [GGDiskCachedObject MR_findFirstByAttribute:@"key" withValue:identifier];
     return cachedObject;
 }
 
