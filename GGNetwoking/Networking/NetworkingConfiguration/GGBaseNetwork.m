@@ -250,7 +250,7 @@ NSString *const kIMGKey = @"kIMGKey";
         GGURLResponse *response = [[GGURLResponse alloc] initWithData:result];
         response.requestParams = params;
         response.requestUrlStr = urlStr;
-        [self handleResponse:response shouldCache:NO diskCache:YES completedHandler:completed];
+        [self handleResponse:response shouldCache:NO diskCache:NO completedHandler:completed];
     });
     
     return YES;
