@@ -24,7 +24,11 @@
 
 // isCache is NO
 - (instancetype)initWithResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request responseObject:(id)responseObject responseString:(NSString *)responseString responseData:(NSData *)responseData status:(GGURLResponseStatus)status;
-// isCache is YES
-- (instancetype)initWithData:(NSData *)data;
+
+// isCache is YES, isDiskCache is NO
+- (instancetype)initWithMemoryData:(NSData *)data;
+
+// isCache is NO, isDiskCache is YES
+- (instancetype)initWithDiskData:(NSData *)data;
 
 @end

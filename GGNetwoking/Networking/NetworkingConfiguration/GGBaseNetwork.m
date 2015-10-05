@@ -172,7 +172,7 @@ NSString *const kIMGKey = @"kIMGKey";
         [self.cache saveCacheWithData:response.responseData URLStr:response.requestUrlStr params:response.requestParams];
     }
     
-    if (diskCache && !response.isCache) {
+    if (diskCache && !response.isCache && !response.isDiskCache) {
         [[GGDiskCache sharedInstance] saveCacheWithData:response.responseData URLStr:response.requestUrlStr params:response.requestParams];
     }
     
@@ -229,7 +229,7 @@ NSString *const kIMGKey = @"kIMGKey";
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        GGURLResponse *response = [[GGURLResponse alloc] initWithData:result];
+        GGURLResponse *response = [[GGURLResponse alloc] initWithMemoryData:result];
         response.requestParams = params;
         response.requestUrlStr = urlStr;
         [self handleResponse:response shouldCache:NO diskCache:YES completedHandler:completed];
@@ -247,7 +247,7 @@ NSString *const kIMGKey = @"kIMGKey";
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        GGURLResponse *response = [[GGURLResponse alloc] initWithData:result];
+        GGURLResponse *response = [[GGURLResponse alloc] initWithDiskData:result];
         response.requestParams = params;
         response.requestUrlStr = urlStr;
         [self handleResponse:response shouldCache:NO diskCache:NO completedHandler:completed];
