@@ -34,8 +34,7 @@
 static NSTimeInterval GGNetworkTimeoutInterval   = 60;    // 超时时间
 static NSTimeInterval kGGCacheOutdateTimeSeconds = 300;   // 5分钟的cache过期时间
 static NSUInteger     kGGCacheCountLimit         = 1000;  // 最多1000条cache
-static NSUInteger     kGGDiskCacheCountLimit     = 1000;  // 1000条磁盘记录
-static NSUInteger     kGGDiskCacheCapacityM      = 500;   // 最大本地缓存容量 500 M
+static NSUInteger     kGGDiskCacheCapacityLimitM = 500;   // 最大本地缓存容量 500 M
 
 typedef NS_ENUM(NSInteger, GGResponseErrCodeType){
     GGServiceResponseErrCodeTypeNone = 1000,     //服务端返回错误代码

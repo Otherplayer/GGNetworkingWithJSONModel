@@ -74,7 +74,7 @@
 - (BOOL)couldNotHandleCapicaty{
     NSLog(@"当前手机存储空间： %lld KB \n当前手机数据空间：%lld M",[self deviceFreeDiskSpace],[self dataSpace]);
     
-    if ([self dataSpace] > kGGDiskCacheCapacityM * 1024.0 || [self deviceFreeDiskSpace] <= 10 * 1024) {// 手机存储空间过小，删除两天前的数据
+    if ([self dataSpace] > kGGDiskCacheCapacityLimitM * 1024.0 || [self deviceFreeDiskSpace] <= 10 * 1024) {// 手机存储空间过小，删除两天前的数据
         
         NSDate *beforeYesterday = [NSDate dateWithTimeIntervalSinceNow:- 2 * 3600];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lastUpdateTime > %@",beforeYesterday];
