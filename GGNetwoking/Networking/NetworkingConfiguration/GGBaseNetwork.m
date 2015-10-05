@@ -86,11 +86,79 @@ NSString *const kIMGKey = @"kIMGKey";
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark
+#pragma mark - Base Network Public Methods
+
+////网络请求,请勿改动
+
+- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+    
+    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
+        return;
+    }
+    
+    [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self isSuccessedOnCallingAPIOperation:operation object:responseObject url:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completedHandler:completed];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        
+    }];
+}
+
+
+- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+    
+    [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        for (int i = 0; i < images.count; i++) {
+            UIImage *image = [[images objectAtIndex:i] objectForKey:kIMGKey];
+            NSString *fileName = [[[NSDate date] description] stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
+            NSData *imageData = UIImageJPEGRepresentation(image, 0.35);
+            [formData appendPartWithFileData:imageData name:serviceName fileName:fileName mimeType:@"image/jpeg"];
+        }
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self isSuccessedOnCallingAPIOperationNoCache:operation withReObject:responseObject completedHandler:completed];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        
+    }];
+}
+
+
+- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+    
+    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
+        return;
+    }
+    
+    [[GGBaseNetwork sharedNetwork] GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self isSuccessedOnCallingAPIOperation:operation object:responseObject url:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completedHandler:completed];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        
+    }];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark
 #pragma mark -  统一数据处理 Private
 
 ////数据处理，请勿改动
 
-- (void)isSuccessedOnCallingAPI:(GGURLResponse *)response shouldCache:(BOOL)flag diskCache:(BOOL)diskCache completedHandler:(GGRequestCallbackBlock)completed{
+- (void)handleResponse:(GGURLResponse *)response shouldCache:(BOOL)flag diskCache:(BOOL)diskCache completedHandler:(GGRequestCallbackBlock)completed{
     
     id fetchedRawData = nil;
     
@@ -111,25 +179,7 @@ NSString *const kIMGKey = @"kIMGKey";
     [GGLogger logDebugResponse:response];
     
     [self fetchData:fetchedRawData completedHandler:completed];
-
-}
-
-- (void)isFailedOncallingAPIOperation:(AFHTTPRequestOperation *)operation withError:(NSError *)error completedHandler:(GGRequestCallbackBlock)completed timeoutHandler:(GGRequestTimeoutBlock)timeoutBlock{
     
-    [GGLogger logDebugOperation:operation];
-    
-    if (error.code == NSURLErrorTimedOut) {
-        timeoutBlock(error.code,error.localizedDescription);
-    }else{
-    }
-    completed(NO, GGServiceResponseErrCodeTypeSeverErr, error.localizedDescription);
-}
-
-- (void)isSuccessOperationShouldNotCache:(AFHTTPRequestOperation *)operation withReObject:(id)responseObject completedHandler:(GGRequestCallbackBlock)completed{
-    
-    [GGLogger logDebugOperation:operation];
-    
-    [self fetchData:responseObject completedHandler:completed];
 }
 
 
@@ -150,74 +200,6 @@ NSString *const kIMGKey = @"kIMGKey";
 #endif
     
     
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark - Base Network Private
-
-////网络请求,请勿改动
-
-- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    
-    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
-        return;
-    }
-    
-    [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:memoryCache diskCache:diskCache completedHandler:completed];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        [self isFailedOncallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
-        
-    }];
-}
-
-
-- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    
-    [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
-        for (int i = 0; i < images.count; i++) {
-            UIImage *image = [[images objectAtIndex:i] objectForKey:kIMGKey];
-            NSString *fileName = [[[NSDate date] description] stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
-            NSData *imageData = UIImageJPEGRepresentation(image, 0.35);
-            [formData appendPartWithFileData:imageData name:serviceName fileName:fileName mimeType:@"image/jpeg"];
-        }
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [self isSuccessOperationShouldNotCache:operation withReObject:responseObject completedHandler:completed];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        [self isFailedOncallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
-        
-    }];
-}
-
-
-- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    
-    if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
-        return;
-    }
-    
-    [[GGBaseNetwork sharedNetwork] GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [self isSuccessOperation:operation object:responseObject url:URLString params:parameters memberCache:memoryCache diskCache:diskCache completedHandler:completed];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        [self isFailedOncallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
-        
-    }];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +232,7 @@ NSString *const kIMGKey = @"kIMGKey";
         GGURLResponse *response = [[GGURLResponse alloc] initWithData:result];
         response.requestParams = params;
         response.requestUrlStr = urlStr;
-        [self isSuccessedOnCallingAPI:response shouldCache:NO diskCache:YES completedHandler:completed];
+        [self handleResponse:response shouldCache:NO diskCache:YES completedHandler:completed];
     });
     
     return YES;
@@ -268,14 +250,16 @@ NSString *const kIMGKey = @"kIMGKey";
         GGURLResponse *response = [[GGURLResponse alloc] initWithData:result];
         response.requestParams = params;
         response.requestUrlStr = urlStr;
-        [self isSuccessedOnCallingAPI:response shouldCache:NO diskCache:YES completedHandler:completed];
+        [self handleResponse:response shouldCache:NO diskCache:YES completedHandler:completed];
     });
     
     return YES;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)isSuccessOperation:(AFHTTPRequestOperation *)operation object:(id)object url:(NSString *)url params:(id)params memberCache:(BOOL)memberCache diskCache:(BOOL)diskCache completedHandler:(GGRequestCallbackBlock)completed{
+- (void)isSuccessedOnCallingAPIOperation:(AFHTTPRequestOperation *)operation object:(id)object url:(NSString *)url params:(id)params memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completedHandler:(GGRequestCallbackBlock)completed{
     GGURLResponse *response = [[GGURLResponse alloc] initWithResponse:operation.response
                                                               request:operation.request
                                                        responseObject:object
@@ -286,9 +270,26 @@ NSString *const kIMGKey = @"kIMGKey";
     response.requestParams = params;
     response.requestUrlStr = url;
     
-    [self isSuccessedOnCallingAPI:response shouldCache:memberCache diskCache:diskCache completedHandler:completed];
+    [self handleResponse:response shouldCache:memoryCache diskCache:diskCache completedHandler:completed];
 }
 
+- (void)isSuccessedOnCallingAPIOperationNoCache:(AFHTTPRequestOperation *)operation withReObject:(id)responseObject completedHandler:(GGRequestCallbackBlock)completed{
+    
+    [GGLogger logDebugOperation:operation];
+    
+    [self fetchData:responseObject completedHandler:completed];
+}
+
+- (void)isFailedOnCallingAPIOperation:(AFHTTPRequestOperation *)operation withError:(NSError *)error completedHandler:(GGRequestCallbackBlock)completed timeoutHandler:(GGRequestTimeoutBlock)timeoutBlock{
+    
+    [GGLogger logDebugOperation:operation];
+    
+    if (error.code == NSURLErrorTimedOut) {
+        timeoutBlock(error.code,error.localizedDescription);
+    }else{
+    }
+    completed(NO, GGServiceResponseErrCodeTypeSeverErr, error.localizedDescription);
+}
 
 
 @end
