@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "GGTopDataSource.h"
-
+#import "UIDevice+GGNetworkingMethods.h"
+#import "NSFileManager+GGNetworkingMethods.h"
 @interface ViewController ()
 @property (nonatomic, strong)GGTopDataSource *dataSource;
 @end
@@ -20,7 +21,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.dataSource = [[GGTopDataSource alloc] init];
-
+    
+    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    NSLog(@"%lld M \n %@ \n %lld",[UIDevice freeDiskSpaceInBytes],NSHomeDirectory(),[NSFileManager fileSizeAtPath:filePath]);
 }
 
 - (void)didReceiveMemoryWarning {
