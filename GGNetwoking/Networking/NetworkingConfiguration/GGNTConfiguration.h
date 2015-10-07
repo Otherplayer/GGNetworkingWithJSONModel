@@ -14,7 +14,7 @@
 
 //////////////////////////////////////
 #ifdef DEBUG
-#define IS_OFF_LINE
+//#define IS_OFF_LINE
 #endif
 //////////////////////////////////////
 
@@ -24,9 +24,9 @@
 
 
 #ifdef IS_OFF_LINE
-#define HOTYQ_JAVA_API @"https://121.201.63.217:8089/api/0106/"
+#define HOTYQ_JAVA_API @"https://121.201.63.217:8089/api/0107/"
 #else
-#define HOTYQ_JAVA_API @"https://www.hotyq.com:8099/api/0106/"          //线上接口
+#define HOTYQ_JAVA_API @"https://www.hotyq.com:8099/api/0107/"          //线上接口
 #endif
 
 

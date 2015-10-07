@@ -34,13 +34,13 @@ NSString *const kAPIDynamic  = HOTYQ_JAVA_API BASE_URL_Photo @"/getPhotos.do";
 
 ///1.
 - (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-    [self POST:kAPITopTypee params:parameters memoryCache:YES diskCache:YES completed:completed timeout:timeoutBlock];
+    [self POST:kAPITopTypee params:parameters memoryCache:NO diskCache:YES completed:completed timeout:timeoutBlock];
 }
 
 
 ///2.
 - (void)getDynamicListWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
-     [self POST:kAPIDynamic params:parameters memoryCache:YES diskCache:YES completed:completed timeout:timeoutBlock];
+     [self POST:kAPIDynamic params:parameters memoryCache:NO diskCache:YES completed:completed timeout:timeoutBlock];
 }
 
 
