@@ -123,7 +123,8 @@
 }
 
 - (long long)dataSpace{
-    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+    filePath = [filePath stringByAppendingPathComponent:@"Application Support"];
     return [NSFileManager fileSizeAtPath:filePath];
 }
 

@@ -10,7 +10,7 @@
 #define GGNetwoking_GGNTConfiguration_h
 
 #define SHOULD_USE_JSONMODEL   /*是否调用JSONModel*/
-
+#import "GGBASEModel.h"
 
 //////////////////////////////////////
 #ifdef DEBUG
@@ -48,8 +48,11 @@ typedef NS_ENUM(NSUInteger, GGURLResponseStatus){
 };
 
 
-
+#ifdef SHOULD_USE_JSONMODEL
+typedef void (^GGRequestCallbackBlock)(BOOL success, GGResponseErrCodeType errCode, GGBASEModel *responseData);
+#else
 typedef void (^GGRequestCallbackBlock)(BOOL success, GGResponseErrCodeType errCode, id responseData);
+#endif
 typedef void (^GGRequestTimeoutBlock)(NSInteger errCode, NSString *localizedDescription);
 
 

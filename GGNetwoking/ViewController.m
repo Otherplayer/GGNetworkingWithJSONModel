@@ -21,9 +21,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.dataSource = [[GGTopDataSource alloc] init];
-    
-    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-    NSLog(@"%lld M \n %@ \n %lld",[UIDevice freeDiskSpaceInBytes],NSHomeDirectory(),[NSFileManager fileSizeAtPath:filePath]);
+    NSString *filePath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+    filePath = [filePath stringByAppendingPathComponent:@"Application Support"];
+    NSLog(@"%lld M \n %@ \n %lld",[UIDevice freeDiskSpaceInBytes],filePath,[NSFileManager fileSizeAtPath:filePath]);
 }
 
 - (void)didReceiveMemoryWarning {

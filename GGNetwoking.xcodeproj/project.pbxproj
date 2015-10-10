@@ -14,6 +14,7 @@
 		634347261BC1316700090F1A /* GGReachibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347251BC1316700090F1A /* GGReachibility.m */; settings = {ASSET_TAGS = (); }; };
 		6343472B1BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347281BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		6343472C1BC14A1C00090F1A /* GGDiskCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6343472A1BC14A1C00090F1A /* GGDiskCachedObject.m */; settings = {ASSET_TAGS = (); }; };
+		634B35711BC8FE0D00803035 /* GGBASEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 634B35701BC8FE0D00803035 /* GGBASEModel.m */; settings = {ASSET_TAGS = (); }; };
 		637917AC1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AB1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m */; settings = {ASSET_TAGS = (); }; };
 		637917AF1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AE1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m */; settings = {ASSET_TAGS = (); }; };
 		638E15581B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15571B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m */; };
@@ -21,7 +22,6 @@
 		638E155E1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E155D1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m */; };
 		638E15611B8FFD4800345341 /* NSObject+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15601B8FFD4800345341 /* NSObject+GGNetworkingMethods.m */; };
 		638E15641B8FFFD700345341 /* GGNTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15631B8FFFD600345341 /* GGNTManager.m */; };
-		63BF6F6D1BB922F800ED7F84 /* GGBASEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */; settings = {ASSET_TAGS = (); }; };
 		63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */; settings = {ASSET_TAGS = (); }; };
 		63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F721BB93C3100ED7F84 /* GGDynamicModel.m */; settings = {ASSET_TAGS = (); }; };
 		63BF6F7F1BB9483E00ED7F84 /* GGNetwokingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F7E1BB9483E00ED7F84 /* GGNetwokingUITests.m */; };
@@ -71,6 +71,8 @@
 		634347281BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GGDiskCachedObject+CoreDataProperties.m"; sourceTree = "<group>"; };
 		634347291BC14A1C00090F1A /* GGDiskCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDiskCachedObject.h; sourceTree = "<group>"; };
 		6343472A1BC14A1C00090F1A /* GGDiskCachedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDiskCachedObject.m; sourceTree = "<group>"; };
+		634B356F1BC8FE0D00803035 /* GGBASEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGBASEModel.h; sourceTree = "<group>"; };
+		634B35701BC8FE0D00803035 /* GGBASEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGBASEModel.m; sourceTree = "<group>"; };
 		637917AA1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+GGNetworkingMethods.h"; sourceTree = "<group>"; };
 		637917AB1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+GGNetworkingMethods.m"; sourceTree = "<group>"; };
 		637917AD1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+GGNetworkingMethods.h"; sourceTree = "<group>"; };
@@ -85,8 +87,6 @@
 		638E15601B8FFD4800345341 /* NSObject+GGNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GGNetworkingMethods.m"; sourceTree = "<group>"; };
 		638E15621B8FFFD600345341 /* GGNTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGNTManager.h; sourceTree = "<group>"; };
 		638E15631B8FFFD600345341 /* GGNTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNTManager.m; sourceTree = "<group>"; };
-		63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGBASEModel.h; path = ../../GGBASEModel.h; sourceTree = "<group>"; };
-		63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGBASEModel.m; path = ../../GGBASEModel.m; sourceTree = "<group>"; };
 		63BF6F6E1BB9273A00ED7F84 /* GGDynamicTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDynamicTypeModel.h; sourceTree = "<group>"; };
 		63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDynamicTypeModel.m; sourceTree = "<group>"; };
 		63BF6F711BB93C3100ED7F84 /* GGDynamicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDynamicModel.h; sourceTree = "<group>"; };
@@ -194,11 +194,11 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		63BF6F771BB940E400ED7F84 /* RootModel */ = {
+		634B356E1BC8FE0D00803035 /* RootModel */ = {
 			isa = PBXGroup;
 			children = (
-				63BF6F6B1BB922F800ED7F84 /* GGBASEModel.h */,
-				63BF6F6C1BB922F800ED7F84 /* GGBASEModel.m */,
+				634B356F1BC8FE0D00803035 /* GGBASEModel.h */,
+				634B35701BC8FE0D00803035 /* GGBASEModel.m */,
 			);
 			path = RootModel;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 				63F9C1911B8F69FC00C9AA2B /* Logger */,
 				634347231BC130F200090F1A /* Reachability */,
 				63F9C1941B8F69FC00C9AA2B /* NetworkingConfiguration */,
-				63BF6F771BB940E400ED7F84 /* RootModel */,
+				634B356E1BC8FE0D00803035 /* RootModel */,
 				638E15621B8FFFD600345341 /* GGNTManager.h */,
 				638E15631B8FFFD600345341 /* GGNTManager.m */,
 			);
@@ -542,12 +542,12 @@
 				63F9C1A21B8F69FC00C9AA2B /* GGLogger.m in Sources */,
 				63DAA5371B8DC60A0029AA8A /* ViewController.m in Sources */,
 				634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */,
-				63BF6F6D1BB922F800ED7F84 /* GGBASEModel.m in Sources */,
 				637917AF1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m in Sources */,
 				63F9C19E1B8F69FC00C9AA2B /* NSMutableString+GGNetworkMethods.m in Sources */,
 				638E15641B8FFFD700345341 /* GGNTManager.m in Sources */,
 				63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */,
 				63DAA5341B8DC60A0029AA8A /* AppDelegate.m in Sources */,
+				634B35711BC8FE0D00803035 /* GGBASEModel.m in Sources */,
 				63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */,
 				638E15611B8FFD4800345341 /* NSObject+GGNetworkingMethods.m in Sources */,
 				63F9C1A41B8F69FC00C9AA2B /* GGURLResponse.m in Sources */,
