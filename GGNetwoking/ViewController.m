@@ -70,15 +70,26 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     [cell.textLabel setText:@"Touch Me, Baby !"];
     return cell;
 }
+//- (BOOL)tableView:(UITableView *)tableView canFocusRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(9_0){
+//    NSLog(@"canFocusRowAtIndexPath");
+//    return NO;
+//}
+//- (BOOL)tableView:(UITableView *)tableView shouldUpdateFocusInContext:(UITableViewFocusUpdateContext *)context NS_AVAILABLE_IOS(9_0){
+//    NSLog(@"shouldUpdateFocusInContext");
+//    return NO;
+//}
+//- (void)tableView:(UITableView *)tableView didUpdateFocusInContext:(UITableViewFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator NS_AVAILABLE_IOS(9_0){
+//    NSLog(@"didUpdateFocusInContext");
+//}
+////- (nullable NSIndexPath *)indexPathForPreferredFocusedViewInTableView:(UITableView *)tableView NS_AVAILABLE_IOS(9_0){
+////    return <#expression#>
+////}
 
 #pragma mark - UIViewControllerPreviewingDelegate
 
 // If you return nil, a preview presentation will not be performed
 - (nullable UIViewController *)previewingContext:(id <UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
     
-    TDCell *cell = nil;
-    [self.tableView convertPoint:location toView:cell];
-    NSLog(@"%@",cell);
     //注意这里我因为测试，没做具体的位置处理，如果需要定位到具体的图片Cell位置的话，可以用location通过tableView的convertPoint来取到指定Cell
     PreViewController *childVC = [[PreViewController alloc] init];
     
@@ -91,8 +102,16 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     childVC.view = er;
     
     
-    CGFloat heightOfCell = 44;
-    CGRect rect = CGRectMake(0, location.y - heightOfCell/2, self.view.frame.size.width, heightOfCell);
+    CGPoint inPoint = [self.view convertPoint:location toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:inPoint];
+    TDCell *cell = (TDCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"%ld %@",indexPath.row,cell);
+    
+    CGPoint outPoint = [self.tableView convertPoint:cell.frame.origin toView:self.view];
+    CGRect rect;
+    rect.origin = CGPointMake(0, outPoint.y);
+    rect.size = cell.frame.size;
+    rect.size.height = rect.size.height - 1; //去掉cell下面的那条线
     previewingContext.sourceRect = rect;
     
     
@@ -113,7 +132,7 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
         NSLog(@"3DTouch已开启");
     }else{
         NSLog(@"3DTouch未开启");
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"3DTouch未开启" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"3DTouch未开启" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView show];
     }
 }

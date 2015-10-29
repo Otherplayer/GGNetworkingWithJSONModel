@@ -35,7 +35,7 @@
 			<key>UIApplicationShortcutItemSubtitle</key>
 			<string>Click me, Baby!</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>shortcutTitle1</string>
+			<string>Fuck You!</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).First</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
@@ -48,9 +48,9 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeShare</string>
 			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>shortcutSubtitle2</string>
+			<string>Fuck Me,Baby!</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>shortcutTitle2</string>
+			<string>Come on</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Second</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
