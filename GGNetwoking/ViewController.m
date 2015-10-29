@@ -107,6 +107,10 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     TDCell *cell = (TDCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     NSLog(@"%ld %@",indexPath.row,cell);
     
+    if (!cell) {
+        return nil; //如果点击的为cell之外的区域，不响应此方法
+    }
+    
     CGPoint outPoint = [self.tableView convertPoint:cell.frame.origin toView:self.view];
     CGRect rect;
     rect.origin = CGPointMake(0, outPoint.y);
