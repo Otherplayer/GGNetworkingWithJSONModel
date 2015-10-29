@@ -7,23 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		634347151BBF729A00090F1A /* GGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347121BBF729A00090F1A /* GGCache.m */; settings = {ASSET_TAGS = (); }; };
-		634347161BBF729A00090F1A /* GGCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347141BBF729A00090F1A /* GGCachedObject.m */; settings = {ASSET_TAGS = (); }; };
-		634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634347171BBF74AD00090F1A /* GGNetworking.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		634347221BBF7E3F00090F1A /* GGDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347211BBF7E3F00090F1A /* GGDiskCache.m */; settings = {ASSET_TAGS = (); }; };
-		634347261BC1316700090F1A /* GGReachibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347251BC1316700090F1A /* GGReachibility.m */; settings = {ASSET_TAGS = (); }; };
-		6343472B1BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347281BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		6343472C1BC14A1C00090F1A /* GGDiskCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6343472A1BC14A1C00090F1A /* GGDiskCachedObject.m */; settings = {ASSET_TAGS = (); }; };
-		634B35711BC8FE0D00803035 /* GGBASEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 634B35701BC8FE0D00803035 /* GGBASEModel.m */; settings = {ASSET_TAGS = (); }; };
-		637917AC1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AB1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m */; settings = {ASSET_TAGS = (); }; };
-		637917AF1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AE1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m */; settings = {ASSET_TAGS = (); }; };
+		63132A641BE1EB6F00505CF8 /* TDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63132A631BE1EB6F00505CF8 /* TDCell.m */; };
+		63132A661BE1F11600505CF8 /* 1xbVZ8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63132A651BE1F11600505CF8 /* 1xbVZ8.jpg */; };
+		63132A691BE1F14E00505CF8 /* PreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63132A681BE1F14E00505CF8 /* PreViewController.m */; };
+		634347151BBF729A00090F1A /* GGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347121BBF729A00090F1A /* GGCache.m */; };
+		634347161BBF729A00090F1A /* GGCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347141BBF729A00090F1A /* GGCachedObject.m */; };
+		634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634347171BBF74AD00090F1A /* GGNetworking.xcdatamodeld */; };
+		634347221BBF7E3F00090F1A /* GGDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347211BBF7E3F00090F1A /* GGDiskCache.m */; };
+		634347261BC1316700090F1A /* GGReachibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347251BC1316700090F1A /* GGReachibility.m */; };
+		6343472B1BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 634347281BC14A1C00090F1A /* GGDiskCachedObject+CoreDataProperties.m */; };
+		6343472C1BC14A1C00090F1A /* GGDiskCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6343472A1BC14A1C00090F1A /* GGDiskCachedObject.m */; };
+		634B35711BC8FE0D00803035 /* GGBASEModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 634B35701BC8FE0D00803035 /* GGBASEModel.m */; };
+		637917AC1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AB1BC22F66003AFC02 /* UIDevice+GGNetworkingMethods.m */; };
+		637917AF1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 637917AE1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m */; };
 		638E15581B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15571B8FFBD600345341 /* NSDictionary+GGNetworkingMethods.m */; };
 		638E155B1B8FFC2900345341 /* NSArray+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E155A1B8FFC2900345341 /* NSArray+GGNetworkingMethods.m */; };
 		638E155E1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E155D1B8FFC7700345341 /* NSURLRequest+GGNetworkingMethods.m */; };
 		638E15611B8FFD4800345341 /* NSObject+GGNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15601B8FFD4800345341 /* NSObject+GGNetworkingMethods.m */; };
 		638E15641B8FFFD700345341 /* GGNTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E15631B8FFFD600345341 /* GGNTManager.m */; };
-		63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */; settings = {ASSET_TAGS = (); }; };
-		63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F721BB93C3100ED7F84 /* GGDynamicModel.m */; settings = {ASSET_TAGS = (); }; };
+		63BF6F701BB9273A00ED7F84 /* GGDynamicTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F6F1BB9273A00ED7F84 /* GGDynamicTypeModel.m */; };
+		63BF6F731BB93C3100ED7F84 /* GGDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F721BB93C3100ED7F84 /* GGDynamicModel.m */; };
 		63BF6F7F1BB9483E00ED7F84 /* GGNetwokingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BF6F7E1BB9483E00ED7F84 /* GGNetwokingUITests.m */; };
 		63DAA5311B8DC60A0029AA8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAA5301B8DC60A0029AA8A /* main.m */; };
 		63DAA5341B8DC60A0029AA8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DAA5331B8DC60A0029AA8A /* AppDelegate.m */; };
@@ -58,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63132A621BE1EB6F00505CF8 /* TDCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDCell.h; sourceTree = "<group>"; };
+		63132A631BE1EB6F00505CF8 /* TDCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDCell.m; sourceTree = "<group>"; };
+		63132A651BE1F11600505CF8 /* 1xbVZ8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1xbVZ8.jpg; path = ../../../Pictures/1xbVZ8.jpg; sourceTree = "<group>"; };
+		63132A671BE1F14E00505CF8 /* PreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreViewController.h; sourceTree = "<group>"; };
+		63132A681BE1F14E00505CF8 /* PreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreViewController.m; sourceTree = "<group>"; };
 		634347111BBF729A00090F1A /* GGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCache.h; sourceTree = "<group>"; };
 		634347121BBF729A00090F1A /* GGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCache.m; sourceTree = "<group>"; };
 		634347131BBF729A00090F1A /* GGCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCachedObject.h; sourceTree = "<group>"; };
@@ -160,6 +168,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		63132A611BE1EB5200505CF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63132A621BE1EB6F00505CF8 /* TDCell.h */,
+				63132A631BE1EB6F00505CF8 /* TDCell.m */,
+				63132A651BE1F11600505CF8 /* 1xbVZ8.jpg */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6343470F1BBF725900090F1A /* DiskCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,11 +257,14 @@
 			children = (
 				63F9C17E1B8F69FC00C9AA2B /* Networking */,
 				63DAA5681B8EBCD20029AA8A /* Model */,
+				63132A611BE1EB5200505CF8 /* View */,
 				63DAA5551B8DCC0A0029AA8A /* AppGlobal.h */,
 				63DAA5321B8DC60A0029AA8A /* AppDelegate.h */,
 				63DAA5331B8DC60A0029AA8A /* AppDelegate.m */,
 				63DAA5351B8DC60A0029AA8A /* ViewController.h */,
 				63DAA5361B8DC60A0029AA8A /* ViewController.m */,
+				63132A671BE1F14E00505CF8 /* PreViewController.h */,
+				63132A681BE1F14E00505CF8 /* PreViewController.m */,
 				63DAA5381B8DC60A0029AA8A /* Main.storyboard */,
 				63DAA53B1B8DC60A0029AA8A /* Images.xcassets */,
 				63DAA53D1B8DC60A0029AA8A /* LaunchScreen.xib */,
@@ -478,6 +499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63132A661BE1F11600505CF8 /* 1xbVZ8.jpg in Resources */,
 				63DAA53A1B8DC60A0029AA8A /* Main.storyboard in Resources */,
 				63DAA53F1B8DC60A0029AA8A /* LaunchScreen.xib in Resources */,
 				63DAA53C1B8DC60A0029AA8A /* Images.xcassets in Resources */,
@@ -542,6 +564,7 @@
 				63F9C1A21B8F69FC00C9AA2B /* GGLogger.m in Sources */,
 				63DAA5371B8DC60A0029AA8A /* ViewController.m in Sources */,
 				634347191BBF74AD00090F1A /* GGNetworking.xcdatamodeld in Sources */,
+				63132A641BE1EB6F00505CF8 /* TDCell.m in Sources */,
 				637917AF1BC24BFB003AFC02 /* NSFileManager+GGNetworkingMethods.m in Sources */,
 				63F9C19E1B8F69FC00C9AA2B /* NSMutableString+GGNetworkMethods.m in Sources */,
 				638E15641B8FFFD700345341 /* GGNTManager.m in Sources */,
@@ -563,6 +586,7 @@
 				634347151BBF729A00090F1A /* GGCache.m in Sources */,
 				63DAA5311B8DC60A0029AA8A /* main.m in Sources */,
 				63F9C1A31B8F69FC00C9AA2B /* GGBaseNetwork.m in Sources */,
+				63132A691BE1F14E00505CF8 /* PreViewController.m in Sources */,
 				634347261BC1316700090F1A /* GGReachibility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,12 +749,14 @@
 			baseConfigurationReference = 73518D794A7AD7013423F19E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Otherplayer/Desktop/GGNetworking-master/GGNetwoking/PrefixHeader.pch";
 				INFOPLIST_FILE = GGNetwoking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hotyq.HotYQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -740,12 +766,14 @@
 			baseConfigurationReference = 9462DC747BB39BD2CABFDBFF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/Otherplayer/Desktop/GGNetworking-master/GGNetwoking/PrefixHeader.pch";
 				INFOPLIST_FILE = GGNetwoking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hotyq.HotYQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
