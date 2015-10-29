@@ -81,11 +81,21 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     NSLog(@"%@",cell);
     //注意这里我因为测试，没做具体的位置处理，如果需要定位到具体的图片Cell位置的话，可以用location通过tableView的convertPoint来取到指定Cell
     PreViewController *childVC = [[PreViewController alloc] init];
+    
+    //预览时视图的大小
     //    childVC.preferredContentSize = CGSizeMake(0.0f,300);
+    
+    
     UIImageView *er = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1xbVZ8.jpg"]];
-    //    CGRect rect = CGRectMake(10, location.y - 10, self.view.frame.size.width - 20,20);
     childVC.view.frame = self.view.frame;
     childVC.view = er;
+    
+    
+    CGFloat heightOfCell = 44;
+    CGRect rect = CGRectMake(0, location.y - heightOfCell/2, self.view.frame.size.width, heightOfCell);
+    previewingContext.sourceRect = rect;
+    
+    
     return childVC;
 }
 - (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
