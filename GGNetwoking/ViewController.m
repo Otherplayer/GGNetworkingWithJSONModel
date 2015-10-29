@@ -33,6 +33,8 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     NSLog(@"%lld M \n %@ \n %lld",[UIDevice freeDiskSpaceInBytes],filePath,[NSFileManager fileSizeAtPath:filePath]);
     
     [self.tableView registerClass:[TDCell class] forCellReuseIdentifier:TDCellIdentifier];
+    
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -44,7 +46,7 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Methods LoadData
+#pragma mark - Methods Action
 - (IBAction)loadDataAction:(id)sender {
     
     [self.dataSource loadData];
@@ -58,7 +60,6 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self registerForPreviewingWithDelegate:self sourceView:self.view];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -66,11 +67,30 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TDCell *cell = [tableView dequeueReusableCellWithIdentifier:TDCellIdentifier forIndexPath:indexPath];
-    [cell.textLabel setText:@"中国"];
+    [cell.textLabel setText:@"Touch Me, Baby !"];
     return cell;
 }
 
+#pragma mark - UIViewControllerPreviewingDelegate
 
+// If you return nil, a preview presentation will not be performed
+- (nullable UIViewController *)previewingContext:(id <UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
+    
+    TDCell *cell = nil;
+    [self.tableView convertPoint:location toView:cell];
+    NSLog(@"%@",cell);
+    //注意这里我因为测试，没做具体的位置处理，如果需要定位到具体的图片Cell位置的话，可以用location通过tableView的convertPoint来取到指定Cell
+    PreViewController *childVC = [[PreViewController alloc] init];
+    //    childVC.preferredContentSize = CGSizeMake(0.0f,300);
+    UIImageView *er = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1xbVZ8.jpg"]];
+    //    CGRect rect = CGRectMake(10, location.y - 10, self.view.frame.size.width - 20,20);
+    childVC.view.frame = self.view.frame;
+    childVC.view = er;
+    return childVC;
+}
+- (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
+    [self showViewController:viewControllerToCommit sender:self];
+}
 
 
 #pragma mark - private
@@ -78,6 +98,7 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
 //检测页面是否开启了3DTouch
 - (void)check3DTouch{
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        // 注册
         [self registerForPreviewingWithDelegate:self sourceView:self.view];
         NSLog(@"3DTouch已开启");
     }else{
@@ -88,18 +109,5 @@ static NSString *TDCellIdentifier = @"TDCellIdentifier";
 }
 
 
-// If you return nil, a preview presentation will not be performed
-- (nullable UIViewController *)previewingContext:(id <UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
-    PreViewController *childVC = [[PreViewController alloc] init];
-    //    childVC.preferredContentSize = CGSizeMake(0.0f,300);
-    UIImageView *er = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1xbVZ8.jpg"]];
-    //    CGRect rect = CGRectMake(10, location.y - 10, self.view.frame.size.width - 20,20);
-    childVC.view.frame = self.view.frame;
-    childVC.view = er;
-    return childVC;
-}
-- (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
-     [self showViewController:viewControllerToCommit sender:self];
-}
 
 @end
