@@ -9,5 +9,13 @@
 #import "GGBASEModel.h"
 
 @implementation GGBASEModel
-
++ (void)initKeyMapper
+{
+    [JSONModel setGlobalKeyMapper:[
+                                   [JSONKeyMapper alloc] initWithDictionary:@{
+                                                                              @"description" : @"desc",
+                                                                              }
+                                   ]
+     ];
+}
 @end

@@ -37,23 +37,17 @@ static NSUInteger     kGGCacheCountLimit         = 1000;  // 最多1000条cache
 static NSUInteger     kGGDiskCacheCapacityLimitM = 500;   // 最大本地缓存容量 500 M
 
 typedef NS_ENUM(NSInteger, GGResponseErrCodeType){
-    GGServiceResponseErrCodeTypeNone = 1000,     //服务端返回错误代码
-    GGServiceResponseErrCodeTypeSeverErr = 500,
-};
-
-typedef NS_ENUM(NSUInteger, GGURLResponseStatus){
-    GGURLResponseStatusSuccess,       //请求是否成功只考虑是否成功收到服务器反馈。
-    GGURLResponseStatusErrorTimeout,  //请求超时
-    GGURLResponseStatusErrorNoNetwork //默认除了超时以外的错误都是无网络错误。
+    GGURLResponseStatusSuccess = 1000,        //请求是否成功只考虑是否成功收到服务器反馈。
+    GGURLResponseStatusErrorTimeout = 10001,  //请求超时
+    GGURLResponseStatusErrorNoNetwork = 10002 //除了超时以外的错误都是网络错误。
 };
 
 
 #ifdef SHOULD_USE_JSONMODEL
-typedef void (^GGRequestCallbackBlock)(BOOL success, GGResponseErrCodeType errCode, GGBASEModel *responseData);
+typedef void (^GGRequestCallbackBlock)(BOOL success, GGBASEModel *responseData);
 #else
-typedef void (^GGRequestCallbackBlock)(BOOL success, GGResponseErrCodeType errCode, id responseData);
+typedef void (^GGRequestCallbackBlock)(BOOL success, id responseData);
 #endif
-typedef void (^GGRequestTimeoutBlock)(NSInteger errCode, NSString *localizedDescription);
 
 
 

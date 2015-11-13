@@ -16,7 +16,7 @@
 @property (nonatomic, copy, readwrite) NSData *responseData;
 @property (nonatomic, assign, readwrite) BOOL isCache;
 @property (nonatomic, assign, readwrite) BOOL isDiskCache;
-@property (nonatomic, assign, readwrite) GGURLResponseStatus status;
+@property (nonatomic, assign, readwrite) GGResponseErrCodeType status;
 @property (nonatomic, strong, readwrite) NSHTTPURLResponse *response;
 @end
 
@@ -52,7 +52,7 @@
 
 #pragma mark - life cycle
 
-- (instancetype)initWithResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request responseObject:(id)responseObject responseString:(NSString *)responseString responseData:(NSData *)responseData status:(GGURLResponseStatus)status{
+- (instancetype)initWithResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request responseObject:(id)responseObject responseString:(NSString *)responseString responseData:(NSData *)responseData status:(GGResponseErrCodeType)status{
     self = [super init];
     if (self) {
         self.response = response;
@@ -69,9 +69,9 @@
 }
 
 #pragma mark - private methods
-- (GGURLResponseStatus)responseStatusWithError:(NSError *)error{
+- (GGResponseErrCodeType)responseStatusWithError:(NSError *)error{
     if (error) {
-        GGURLResponseStatus result = GGURLResponseStatusErrorNoNetwork;
+        GGResponseErrCodeType result = GGURLResponseStatusErrorNoNetwork;
         
         // 除了超时以外，所有错误都当成是无网络
         if (error.code == NSURLErrorTimedOut) {

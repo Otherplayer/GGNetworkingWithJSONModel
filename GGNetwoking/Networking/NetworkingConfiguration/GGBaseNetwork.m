@@ -60,6 +60,11 @@ NSString *const kIMGKey = @"kIMGKey";
         shareManager.requestSerializer.timeoutInterval = GGNetworkTimeoutInterval;
         [shareManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         
+        
+        ///--
+        [GGBASEModel initKeyMapper];
+        
+        
     });
     return shareManager;
 }
@@ -91,7 +96,7 @@ NSString *const kIMGKey = @"kIMGKey";
 
 ////网络请求,请勿改动
 
-- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed{
     
     if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
@@ -103,13 +108,13 @@ NSString *const kIMGKey = @"kIMGKey";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed];
         
     }];
 }
 
 
-- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed{
     
     [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
@@ -126,13 +131,13 @@ NSString *const kIMGKey = @"kIMGKey";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed];
         
     }];
 }
 
 
-- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed{
     
     if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
@@ -144,7 +149,7 @@ NSString *const kIMGKey = @"kIMGKey";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed timeoutHandler:timeoutBlock];
+        [self isFailedOnCallingAPIOperation:operation withError:error completedHandler:completed];
         
     }];
 }
@@ -186,17 +191,16 @@ NSString *const kIMGKey = @"kIMGKey";
 - (void)fetchData:(id)object completedHandler:(GGRequestCallbackBlock)completed{
     GGResponseErrCodeType reponseCode = [object[@"state_code"] intValue];
     
-    
 #ifdef SHOULD_USE_JSONMODEL
     NSError *jsonModelError = nil;
     GGBASEModel *baseModel = [[GGBASEModel alloc] initWithDictionary:object error:&jsonModelError];
     if (jsonModelError) {
         NSLog(@"*************************数据解析错误:%@********************************************",jsonModelError);
     }
-    completed(reponseCode == GGServiceResponseErrCodeTypeNone, reponseCode, baseModel);
+    completed(reponseCode == GGURLResponseStatusSuccess, baseModel);
 #else
     id resultData = object[@"data"];
-    completed(reponseCode == GGServiceResponseErrCodeTypeNone, reponseCode, resultData);
+    completed(reponseCode == GGServiceResponseErrCodeTypeNone, resultData);
 #endif
     
     
@@ -280,15 +284,35 @@ NSString *const kIMGKey = @"kIMGKey";
     [self fetchData:responseObject completedHandler:completed];
 }
 
-- (void)isFailedOnCallingAPIOperation:(AFHTTPRequestOperation *)operation withError:(NSError *)error completedHandler:(GGRequestCallbackBlock)completed timeoutHandler:(GGRequestTimeoutBlock)timeoutBlock{
+- (void)isFailedOnCallingAPIOperation:(AFHTTPRequestOperation *)operation withError:(NSError *)error completedHandler:(GGRequestCallbackBlock)completed{
     
     [GGLogger logDebugOperation:operation];
     
+    
+    
+#ifdef SHOULD_USE_JSONMODEL
+    NSDate *now = [NSDate date];
+    
+    GGBASEModel *model = [[GGBASEModel alloc] init];
+    model.desc = error.localizedDescription;
+    model.time_stamp = [NSString stringWithFormat:@"%@",@(now.timeIntervalSinceReferenceDate)];
+    
     if (error.code == NSURLErrorTimedOut) {
-        timeoutBlock(error.code,error.localizedDescription);
+        model.state_code = GGURLResponseStatusErrorTimeout;
     }else{
+        model.state_code = GGURLResponseStatusErrorNoNetwork;
     }
-    completed(NO, GGServiceResponseErrCodeTypeSeverErr, error.localizedDescription);
+    
+    completed(NO, model);
+    
+#else
+    if (error.code == NSURLErrorTimedOut) {
+        completed(NO, error.localizedDescription);
+    }else{
+        completed(NO, error.localizedDescription);
+    }
+#endif
+    
 }
 
 

@@ -18,12 +18,12 @@
 @property (nonatomic, copy, readonly) NSURLRequest *request;
 
 @property (nonatomic, strong, readonly) NSHTTPURLResponse *response;
-@property (nonatomic, assign, readonly) GGURLResponseStatus status;
+@property (nonatomic, assign, readonly) GGResponseErrCodeType status;
 @property (nonatomic, assign, readonly) BOOL isCache;
 @property (nonatomic, assign, readonly) BOOL isDiskCache;
 
 // isCache is NO
-- (instancetype)initWithResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request responseObject:(id)responseObject responseString:(NSString *)responseString responseData:(NSData *)responseData status:(GGURLResponseStatus)status;
+- (instancetype)initWithResponse:(NSHTTPURLResponse *)response request:(NSURLRequest *)request responseObject:(id)responseObject responseString:(NSString *)responseString responseData:(NSData *)responseData status:(GGResponseErrCodeType)status;
 
 // isCache is YES, isDiskCache is NO
 - (instancetype)initWithMemoryData:(NSData *)data;

@@ -14,9 +14,9 @@
 + (instancetype)sharedManager;
 
 /// 获取一级类型列表
-- (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock;
+- (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed;
 
 /// 获取动态
-- (void)getDynamicListWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed timeout:(GGRequestTimeoutBlock)timeoutBlock;
+- (void)getDynamicListWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed;
 
 @end
