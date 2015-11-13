@@ -62,7 +62,6 @@ NSString *const kIMGKey = @"kIMGKey";
         
         
         ///--
-        [GGBASEModel initKeyMapper];
         
         
     });
@@ -96,11 +95,13 @@ NSString *const kIMGKey = @"kIMGKey";
 
 ////网络请求,请勿改动
 
-- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed{
+- (void)POST:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed isNotReachable:(GGNetNotReachabilityBlock)notRBlock{
     
     if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
     }
+    
+    if ([self isNOTReachable]) {notRBlock();return;}
     
     [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -114,7 +115,9 @@ NSString *const kIMGKey = @"kIMGKey";
 }
 
 
-- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed{
+- (void)POST:(NSString *)URLString params:(id)parameters images:(NSArray *)images imageSConfig:(NSString *)serviceName completed:(GGRequestCallbackBlock)completed isNotReachable:(GGNetNotReachabilityBlock)notRBlock{
+    
+    if ([self isNOTReachable]) {notRBlock();return;}
     
     [[GGBaseNetwork sharedNetwork] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
@@ -137,11 +140,13 @@ NSString *const kIMGKey = @"kIMGKey";
 }
 
 
-- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed{
+- (void)GET:(NSString *)URLString params:(id)parameters memoryCache:(BOOL)memoryCache diskCache:(BOOL)diskCache completed:(GGRequestCallbackBlock)completed isNotReachable:(GGNetNotReachabilityBlock)notRBlock{
     
     if ([self shouldLoadDataFromCache:URLString params:parameters memoryCache:memoryCache diskCache:diskCache completed:completed]) {
         return;
     }
+    
+    if ([self isNOTReachable]) {notRBlock();return;}
     
     [[GGBaseNetwork sharedNetwork] GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -314,6 +319,18 @@ NSString *const kIMGKey = @"kIMGKey";
 #endif
     
 }
+
+
+#pragma mark - ISReachibility
+
+- (BOOL)isNOTReachable{
+    return ![GGReachibility sharedInstance].isReachable;
+}
+
+
+
+
+
 
 
 @end

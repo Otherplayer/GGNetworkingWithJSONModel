@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GGBASEModel.h"
 @interface AppDelegate ()
 
 @end
@@ -19,6 +20,8 @@
     
     // Register Network Monitor
     [[GGReachibility sharedInstance] startMonitoringInternetStates];
+    [GGBASEModel initKeyMapper];
+    
     // Register Splite
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"GGNetworking.sqlite"];
     

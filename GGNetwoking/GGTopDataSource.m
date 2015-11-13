@@ -46,6 +46,8 @@
                 NSLog(@"%@",model.firstName);
             }
         }
+    } isNotReachable:^{
+        NSLog(@"[Warning]isNotReachable");
     }];
     
 }
@@ -77,6 +79,8 @@
             }
         }
         
+    } isNotReachable:^{
+        NSLog(@"[Warning]isNotReachable");
     }];
 }
 

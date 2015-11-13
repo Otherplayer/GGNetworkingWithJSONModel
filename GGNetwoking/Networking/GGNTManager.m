@@ -33,14 +33,14 @@ NSString *const kAPIDynamic  = HOTYQ_JAVA_API BASE_URL_Photo @"/getPhotos.do";
 #pragma mark - public interface
 
 ///1.
-- (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed{
-    [self POST:kAPITopTypee params:parameters memoryCache:NO diskCache:YES completed:completed];
+- (void)getTopTypesWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed isNotReachable:(GGNetNotReachabilityBlock)notRBlock{
+    [self POST:kAPITopTypee params:parameters memoryCache:NO diskCache:YES completed:completed  isNotReachable:notRBlock];
 }
 
 
 ///2.
-- (void)getDynamicListWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed{
-     [self POST:kAPIDynamic params:parameters memoryCache:NO diskCache:YES completed:completed];
+- (void)getDynamicListWithParameters:(NSDictionary *)parameters completedHandler:(GGRequestCallbackBlock)completed isNotReachable:(GGNetNotReachabilityBlock)notRBlock{
+     [self POST:kAPIDynamic params:parameters memoryCache:NO diskCache:YES completed:completed isNotReachable:notRBlock];
 }
 
 
